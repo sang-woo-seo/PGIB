@@ -1,5 +1,5 @@
 # PGIB
-Implementation of Interpretable Prototype-based Graph Information Bottleneck
+The official source code for Interpretable Prototype-based Graph Information Bottleneck at NeurIPS 2023. 
 
 ![architecture2_page-0001](./image_architecture.jpg)
 
@@ -14,8 +14,24 @@ torch-scatter             2.0.9
 torch-sparse              0.6.13
 ```
 ## Dataset
-* Download the datasets for graph classification in this link https://chrsmrrs.github.io/datasets/
-* Download the datasets for graph interpretation in this link https://github.com/Samyu0304/graph-information-bottleneck-for-Subgraph-Recognition/tree/main/graph-interpretation/input
+* Download the datasets for graph classification at this link https://chrsmrrs.github.io/datasets/
+* Download the datasets for graph interpretation at this link https://github.com/Samyu0304/graph-information-bottleneck-for-Subgraph-Recognition/tree/main/graph-interpretation/input
+* This folder contains the following comma separated text files (replace DS by the name of the dataset):
+  - n = total number of nodes
+  - m = total number of edges
+  - N = number of graphs
+  - DS_A.txt (m lines) : sparse (block diagonal) adjacency matrix for all graphs, each line corresponds to (row, col) resp. (node_id, node_id)
+  - DS_graph_indicator.txt (n lines) : column vector of graph identifiers for all nodes of all graphs, the value in the i-th line is the graph_id of the node with node_id i
+  - DS_graph_labels.txt (N lines) : class labels for all graphs in the dataset, the value in the i-th line is the class label of the graph with graph_id i
+  - DS_node_labels.txt (n lines) : column vector of node labels, the value in the i-th line corresponds to the node with node_id i
+* There are OPTIONAL files if the respective information is available:
+  - DS_edge_labels.txt (m lines; same size as DS_A_sparse.txt) : labels for the edges in DD_A_sparse.txt 
+  - DS_edge_attributes.txt (m lines; same size as DS_A.txt) : attributes for the edges in DS_A.txt 
+  - DS_node_attributes.txt (n lines) : matrix of node attributes, the comma seperated values in the i-th line is the attribute vector of the node with node_id i
+  - DS_graph_attributes.txt (N lines) : regression values for all graphs in the dataset, the value in the i-th line is the attribute of the graph with graph_id i
+
+
+
 
 ## Run
 
